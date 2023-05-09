@@ -5,21 +5,21 @@ import { NextPage } from 'next';
 import useAuthStore from '../store/authStore';
 
 interface IProps {
-  Likes: any;
+  likes: any;
   flex: string;
   handleLike: () => void;
   handleDislike: () => void;
 }
 
 const LikeButton: NextPage<IProps> = ({
-  Likes,
+  likes,
   flex,
   handleLike,
   handleDislike,
 }) => {
   const [alreadyLiked, setAlreadyLiked] = useState(false);
   const { userProfile }: any = useAuthStore();
-  let filterLikes = Likes?.filter(
+  let filterLikes = likes?.filter(
     (item: any) => item._ref === userProfile?._id
   );
 
@@ -29,7 +29,7 @@ const LikeButton: NextPage<IProps> = ({
     } else {
       setAlreadyLiked(false);
     }
-  }, [filterLikes, Likes]);
+  }, [filterLikes, likes]);
 
   return (
     <div className={`${flex} gap-6`}>
@@ -49,7 +49,7 @@ const LikeButton: NextPage<IProps> = ({
             <MdFavorite className="text-lg md:text-2xl" />
           </div>
         )}
-        <p className="text-md font-semibold ">{Likes?.length || 0}</p>
+        <p className="text-md font-semibold ">{likes?.length || 0}</p>
       </div>
     </div>
   );
