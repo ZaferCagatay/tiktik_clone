@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { uuid } from 'uuidv4';
+
 import { client } from '../../utils/client';
 
 export default async function handler(
@@ -12,7 +13,7 @@ export default async function handler(
     const data = like
       ? await client
           .patch(postId)
-          .setIfMissing({ like: [] })
+          .setIfMissing({ likes: [] })
           .insert('after', 'likes[-1]', [
             {
               _key: uuid(),
