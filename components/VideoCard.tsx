@@ -22,7 +22,7 @@ const VideoCard: NextPage<IProps> = ({ post, isShowingOnHome }) => {
   const options = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.54,
+    threshold: 0.57,
   };
   const isVisibile = useElementOnScreen(options, videoRef);
 
@@ -112,7 +112,7 @@ const VideoCard: NextPage<IProps> = ({ post, isShowingOnHome }) => {
               </div>
             </Link>
             <Link href={`/detail/${post._id}`}>
-              <p className="mt-2 font-normal ">{post.caption}</p>
+              <p className="mt-2 font-normal cursor-pointer ">{post.caption}</p>
             </Link>
           </div>
         </div>
@@ -125,7 +125,7 @@ const VideoCard: NextPage<IProps> = ({ post, isShowingOnHome }) => {
         >
           <Link href={`/detail/${post._id}`}>
             <video
-              className="lg:w-[700px] h-[300px] md:h-[400px] lg:h-[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100 lg:ml-0 ml-7"
+              className="lg:w-[700px] h-[450px] md:h-[500px] lg:h-[530px] w-[220px] rounded-2xl cursor-pointer bg-gray-100 lg:ml-0 ml-7"
               loop
               ref={videoRef}
               src={post.video.asset.url}
