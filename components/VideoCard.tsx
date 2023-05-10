@@ -7,6 +7,8 @@ import { HiVolumeUp, HiVolumeOff } from 'react-icons/hi';
 import { BsPlay, BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs';
 import { GoVerified } from 'react-icons/go';
 
+import useElementOnScreen from '../pages/hooks/useElementOnScreen';
+
 interface IProps {
   post: Video;
   isShowingOnHome?: boolean;
@@ -17,6 +19,12 @@ const VideoCard: NextPage<IProps> = ({ post, isShowingOnHome }) => {
   const [playing, setPlaying] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5,
+  };
+  const isVisibile = useElementOnScreen(options, videoRef);
 
   const onVideoPress = () => {
     if (playing) {
@@ -27,6 +35,20 @@ const VideoCard: NextPage<IProps> = ({ post, isShowingOnHome }) => {
       setPlaying(true);
     }
   };
+
+  useEffect(() => {
+    if (isVisibile) {
+      if (!playing) {
+        videoRef?.current?.play();
+        setPlaying(true);
+      }
+    } else {
+      if (playing) {
+        videoRef?.current?.pause();
+        setPlaying(false);
+      }
+    }
+  }, [isVisibile]);
 
   useEffect(() => {
     if (videoRef?.current) {
