@@ -22,7 +22,7 @@ const VideoCard: NextPage<IProps> = ({ post, isShowingOnHome }) => {
   const options = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.5,
+    threshold: 0.54,
   };
   const isVisibile = useElementOnScreen(options, videoRef);
 
