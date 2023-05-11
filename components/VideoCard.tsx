@@ -125,7 +125,7 @@ const VideoCard: NextPage<IProps> = ({ post, isShowingOnHome }) => {
         >
           <Link href={`/detail/${post._id}`}>
             <video
-              className="lg:w-[700px] h-[450px] md:h-[500px] lg:h-[530px] w-[220px] rounded-2xl cursor-pointer bg-gray-100 lg:ml-0 ml-7"
+              className="lg:w-[700px] h-[400px] md:h-[500px] lg:h-[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100 lg:ml-0 ml-7 lg:mr-0 mr-2"
               loop
               ref={videoRef}
               src={post.video.asset.url}
